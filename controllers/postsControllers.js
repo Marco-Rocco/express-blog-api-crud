@@ -2,9 +2,19 @@ const posts = require('../data/postsArray')
 
 //mostra tutti gli elementi
 function index(req, res) {
-    console.log('response was sent for /routers')
+    console.log('response was sent for /routers');
+    console.log(req.query);
 
-    res.json(posts)
+    let filteredPosts = posts;
+
+    // console.log(req.query.tags)
+
+    if(req.query.tags) {
+        filteredPosts = posts.filter(post => post.tags.includes(req.query.tags))
+    
+    }
+
+    res.json(filteredPosts)
 };
 
 //mstra solo elemento desiderato
