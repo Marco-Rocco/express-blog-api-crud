@@ -15,7 +15,17 @@ function show(req, res) {
 
     const result = posts.find((post) => {
         return post.id === id;
-    }) ?? ('nessun risultato trovato');
+    });
+
+    if(!result) {
+        res.status(404);
+
+        return res.json({
+            status: 404,
+            error: 'not found',
+            message: 'elemento non trovato'
+        })
+    }
 
     res.json(result)
 };
