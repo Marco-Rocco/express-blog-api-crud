@@ -10,4 +10,7 @@ router.get('/', functions.index);
 //ottieni post desiderato
 router.get('/:id', functions.show);
 
+//elimina post desiderato
+router.delete('/:id', functions.destroy)
+
 module.exports = router;
