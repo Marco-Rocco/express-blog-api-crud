@@ -16,4 +16,7 @@ router.delete('/:id', functions.destroy);
 //crea nuovo post
 router.post('/', functions.store);
 
+//aggiorna dati di un post
+router.put('/:id', functions.update);
+
 module.exports = router;

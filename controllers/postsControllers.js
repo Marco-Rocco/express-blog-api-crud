@@ -86,10 +86,39 @@ function store(req, res) {
     res.json(newPost);
 }
 
+function update(req, res) {
+    console.log('modifying post ' + req.params.id);
+
+    const id =  parseInt(req.params.id);
+
+    const result = posts.find((post) => {
+        return post.id === id;
+    });
+
+    if(!result) {
+        res.status(404);
+
+        return res.json({
+            status: 404,
+            error: 'not found',
+            message: 'elemento non trovato'
+        })
+    }
+
+    result.title = req.body.title;
+    result.content= req.body.content;
+    result.tags = req.body.tags;
+
+    console.log(posts)
+
+    res.json(result)
+};
+
 
 module.exports = {
     index,
     show,
     destroy,
-    store
+    store,
+    update
 }
