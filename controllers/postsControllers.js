@@ -66,9 +66,30 @@ function destroy(req, res) {
     res.sendStatus(204)
 }
 
+//crea nuovo elemento
+function store(req, res) {
+
+    const newId = posts[posts.length -1].id +1
+
+    const newPost = {
+        id: newId,
+        title: req.body.title,
+        content: req.body.content,
+        tags: req.body.tags
+        }
+
+    posts.push(newPost);
+    
+    console.log(posts);
+
+    res.status(201);
+    res.json(newPost);
+}
+
 
 module.exports = {
     index,
     show,
-    destroy
+    destroy,
+    store
 }

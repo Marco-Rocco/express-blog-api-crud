@@ -11,6 +11,9 @@ router.get('/', functions.index);
 router.get('/:id', functions.show);
 
 //elimina post desiderato
-router.delete('/:id', functions.destroy)
+router.delete('/:id', functions.destroy);
+
+//crea nuovo post
+router.post('/', functions.store);
 
 module.exports = router;
