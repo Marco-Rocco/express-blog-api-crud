@@ -7,7 +7,8 @@ const port = 1200;
 const postsRouter = require('./routers/postsRouter'); //importo il router dove ho tutte le rotte
 //importa l'errorsHandler
 const errorsHandler = require('./middlewares/errorsHandler');
-
+//importo il notFound
+const notFound= require('./middlewares/notFound')
 
 //APP
 
@@ -23,6 +24,9 @@ app.use("/posts", postsRouter)
 
 //imposta errorsHandler
 app.use(errorsHandler);
+
+//imposto  notFound
+app.use(notFound)
 
 //imposto la funzione del post
 app.post('/', (req, res) => {
