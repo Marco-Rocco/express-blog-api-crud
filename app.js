@@ -1,6 +1,9 @@
 const express = require('express'); //importo express
 const app = express() //invoco express
 const port = 1200;
+//importa l'errorsHandler
+const errorsHandler = require('./middlewares/errorsHandler');
+
 // collego il router
 const postsRouter = require('./routers/postsRouter'); //importo il router dove ho tutte le rotte
 
@@ -9,6 +12,9 @@ app.use(express.static('public')); //rendo pubbliche le immagini
 
 //registro il body-parser
 app.use(express.json());
+
+//imposta errorsHandler
+app.use(errorsHandler);
 
 //imposto la funzione del post
 app.post('/', (req, res) => {

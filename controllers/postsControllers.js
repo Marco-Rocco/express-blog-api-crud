@@ -5,6 +5,8 @@ function index(req, res) {
     console.log('response was sent for /routers');
     console.log(req.query);
 
+    nonnt() 
+
     let filteredPosts = posts;
 
     // console.log(req.query.tags)
