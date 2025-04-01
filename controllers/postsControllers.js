@@ -2,10 +2,11 @@ const posts = require('../data/postsArray')
 
 //mostra tutti gli elementi
 function index(req, res) {
+    
     console.log('response was sent for /routers');
     console.log(req.query);
 
-    nonnt() 
+    erroreFittizio()
 
     let filteredPosts = posts;
 

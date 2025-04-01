@@ -1,17 +1,25 @@
 const express = require('express'); //importo express
 const app = express() //invoco express
 const port = 1200;
-//importa l'errorsHandler
-const errorsHandler = require('./middlewares/errorsHandler');
+
 
 // collego il router
 const postsRouter = require('./routers/postsRouter'); //importo il router dove ho tutte le rotte
+//importa l'errorsHandler
+const errorsHandler = require('./middlewares/errorsHandler');
+
+
+//APP
+
 
 //make images public
 app.use(express.static('public')); //rendo pubbliche le immagini
 
 //registro il body-parser
 app.use(express.json());
+
+//creo il colegamento per le rotte. quidni l'indice da inserire nell path
+app.use("/posts", postsRouter) 
 
 //imposta errorsHandler
 app.use(errorsHandler);
@@ -27,7 +35,6 @@ app.get('/', (req, res) => {
     res.send('server di blog api crud');
 }); //messaggio da mandare alla console e al client
 
-app.use("/posts", postsRouter) //creo il colegamento per le rotte. quidni l'indice da inserire nell path
 
 app.listen(port, () => {
     console.log('server in ascolto su ' + port);
